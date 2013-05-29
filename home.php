@@ -10,6 +10,7 @@ else{
 <html>
 <head>
 	    <title>Read Book</title>  
+	    <meta http-equiv="Content-Type" content="text/html; utf-8" />
     <meta name="description" content="Play Chess Online.">  
     <link rel="icon" href="./book-library.png">
     <link rel="stylesheet" href="stylesheets/reset.css">
@@ -24,8 +25,6 @@ else{
     <script src="scripts/turn.js"></script>
     <script src="scripts/turn.min.js"></script>
     <script type="text/javascript" src="scripts/upload.js"></script>
-<!--     <script type="text/javascript" src="scripts/bookshelf.js"></script>
-<script type="text/javascript" src="scripts/zoom.min.js"></script> -->
     <script type="text/javascript" src="scripts/book.js"></script>
 </head>
 <body onload="new uploader('drop', 'status', 'include/uploader.php', null);">
@@ -51,20 +50,16 @@ else{
 
 	<div class="bookshelf">
 		<div class="shelf">
-			<div class="row-1">
-				<div class="loc">
-					<div> <div class="sample thumb1 cover" sample="steve-jobs"></div> </div>
-					<div> <div class="sample thumb2" sample="html5"></div> </div>
-					<div> <div class="sample thumb3" sample="docs"></div> </div>
+			<div class="row">
+				<div class='loc'>
+					<div> <div class='sample thumb4 cover' sample='magazine1'></div> </div>
+					<div> <div class='sample thumb5' sample='magazine2'></div> </div>
+					<div> <div class='sample thumb6' sample='magazine3'></div> </div>
 				</div>
 			</div>
-			<div class="row-2">
-				<div class="loc">
-					<div> <div class="sample thumb4" sample="magazine1"></div> </div>
-					<div> <div class="sample thumb5" sample="magazine2"></div> </div>
-					<div> <div class="sample thumb6" sample="magazine3"></div> </div>
-				</div>
-			</div>
+			<?php
+			require("./include/book.php");
+			?>
 		</div>
 	</div>
 	<!-- Samples-->

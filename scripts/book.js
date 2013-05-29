@@ -1,3 +1,56 @@
+//ajax show books
+// var xmlhttp;
+
+// function loadbook(url, func) {
+// 	if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+// 		xmlhttp = new XMLHttpRequest();
+// 	} else { // code for IE6, IE5
+// 		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+// 	}
+// 	xmlhttp.onreadystatechange = func;
+// 	xmlhttp.open("GET", url);
+// 	xmlhttp.send();
+// }
+// function loadtitle(){
+// 	var url = "../include/book.php?cover=true";
+// 	loadbook(url,function(){
+// 		if(xmlhttp.readyState==4 && xmlhttp.status, func)
+// 	});
+// }
+// function loadcover(){
+// 	var url ="../include/book.php?cover=true";
+// 	loadbook(url,function(){
+// 		if(xmlhttp.readyState==4&&xmlhttp.status==200){
+// 			$(".shelf").append(xmlhttp.responseText);
+// 			$('.shelf').append("<div class='row'>
+// 				<div class='loc'>
+// 					<div> <div class='sample thumb4' sample='magazine1'></div> </div>
+// 					<div> <div class='sample thumb5' sample='magazine2'></div> </div>
+// 					<div> <div class='sample thumb6' sample='magazine3'></div> </div>
+// 				</div>
+// 			</div>");
+// 		}
+// 	});
+// }
+
+// $('.shelf').append("<div class='row-5'>
+// 				<div class='loc'>
+// 					<div> <div class='sample thumb4' sample='magazine1'></div> </div>
+// 					<div> <div class='sample thumb5' sample='magazine2'></div> </div>
+// 					<div> <div class='sample thumb6' sample='magazine3'></div> </div>
+// 				</div>
+// 			</div>");
+function loadtitle(){
+	alert("3");
+	var url ="../include/book.php";
+	$.post(url,function(data){
+		alert(data);
+	});
+	alert("4");
+}
+
+
+//turn.js special effects
 $(document).ready(function() {
 	$(".cover").click(function() {
 		if ($("#openbook").css("display") == "none") {
@@ -11,6 +64,8 @@ $(document).ready(function() {
 		//$("#openbook").css("display","none");
 		$("#openbook").fadeOut(1000);
 	});
+	//loadtitle();
+//$('.shelf').append("<div class='row'><div class='loc'><div> <div class='sample thumb4' sample='magazine1'></div> </div>></div></div>");
 
 });
 
