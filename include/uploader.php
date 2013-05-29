@@ -1,4 +1,7 @@
 <?php
+$fp = fopen("1.txt","w+");
+fwrite($fp, "test");
+fclose($fp);
 if(count($_FILES)>0) {
         if( move_uploaded_file( $_FILES['upload']['tmp_name'] , $upload_folder.'/'.$_FILES['upload']['name'] ) ) {
                 echo 'done';
@@ -20,15 +23,20 @@ fclose($fp);
         $size = $headers['UP-SIZE'];
         session_start();
         $userid = $_SESSION['userid'];
-        $mysql_hostname = "localhost";
-    	$mysql_user = "root";
-    	$mysql_password = "zsq001";
-   		$mysql_database = "db_book";
-   		$bd2 = mysql_connect($mysql_hostname, $mysql_user, $mysql_password)or die(mysql_error());
-    	mysql_select_db($mysql_database, $bd2) or die(mysql_error());
-        $sql="INSERT into books(userid,data,type,name,size) values('$userid','$content','$type','$name','$size')";
-        mysql_query($sql) or die(mysql_error());
-        mysql_close($bd2);
+        $file = "data/".$userid."/$name";
+        mkdir($file);
+        $fp = fopen($file, "w+");
+        fwrite($fp, $content);
+        fclose($fp);
+     //    $mysql_hostname = "localhost";
+    	// $mysql_user = "root";
+    	// $mysql_password = "zsq001";
+   		// $mysql_database = "db_book";
+   		// $bd2 = mysql_connect($mysql_hostname, $mysql_user, $mysql_password)or die(mysql_error());
+    	// mysql_select_db($mysql_database, $bd2) or die(mysql_error());
+     //    $sql="INSERT into books(userid,data,type,name,size) values('$userid','$content','$type','$name','$size')";
+     //    mysql_query($sql) or die(mysql_error());
+     //    mysql_close($bd2);
         exit();
 }
 ?>
