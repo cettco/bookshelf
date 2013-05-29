@@ -23,11 +23,12 @@ else{
     <script src="scripts/jquery.mousewheel.min.js"></script>
     <script src="scripts/turn.js"></script>
     <script src="scripts/turn.min.js"></script>
+    <script type="text/javascript" src="scripts/upload.js"></script>
 <!--     <script type="text/javascript" src="scripts/bookshelf.js"></script>
 <script type="text/javascript" src="scripts/zoom.min.js"></script> -->
     <script type="text/javascript" src="scripts/book.js"></script>
 </head>
-<body>
+<body onload="new uploader('drop', 'status', 'include/uploader.php', null);">
 	
 	<div class="splash">
 		<div id="logout"><a href="./include/logout.php">Sign Out</a></div>
@@ -38,15 +39,14 @@ else{
 		<ul>
 			<li>It's Greate</li>
 			<li>Help you be smarter</li>
+			<li>Drag file to this area</li>
 <!-- 			<li title="Minimized and Gzipped">Lightweight, 10K</li>
- -->		</ul>
-		<!-- <p class="production">
-			<a href="get" class="get-now">Get now</a>
-		</p>
-		<div class="options">
-			<p><i class="icon development"></i> <a href="get">Get Development Version</a></p>
-			<p><i class="icon github"></i> <a href="http://www.github.com/blasten/turn.js">Fork on GitHub</a> </p>
-		</div> -->
+ -->	</ul>
+ 		<div id="box">
+ 			<div id="status"></div>
+ 			<div id="drop"></div>
+ 		</div>
+		
 	</div>
 
 	<div class="bookshelf">

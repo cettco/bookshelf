@@ -52,12 +52,9 @@ session_start();
                 
                 <?php
                     } else { 
+                        header("location:./home.php");
                 ?>
                 
-                <div id="logout-button"><a href="./include/logout.php">Sign Out</a></div>
-                <div id="welcome-bar">
-                    <div>Welcome, <?php echo $_SESSION['username']; ?></div>
-                </div>
                 
                 <?php
                     }

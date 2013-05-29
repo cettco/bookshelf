@@ -56,16 +56,18 @@
 			$mypassword = $_POST['password'];
 			$mypassword = md5($mypassword);
 			//$sql = "SELECT email_id, username FROM registered_users WHERE email_id='$myemailid' and password='$mypassword' and confirmation_code='y'";
-			$sql = "SELECT email_id, username FROM users WHERE email_id='$myemailid' and password='$mypassword' ";
+			$sql = "SELECT userid,email_id, username FROM users WHERE email_id='$myemailid' and password='$mypassword' ";
 			$result = mysql_query($sql) or die(mysql_error());
 			$row = mysql_fetch_array($result);
 			$myusername = $row['username'];
+			$userid = $row['userid'];
 			$count = mysql_num_rows($result);
 
 			if($count == 1)
 			{
 				$_SESSION['email_id'] = $myemailid;
 				$_SESSION['username'] = $myusername;
+				$_SESSION['userid'] = $userid;
 				header("location: ../home.php");
 			}
 			else
@@ -123,6 +125,7 @@
 		$error = "<div id=\"register-login-text\"><p>Invalid Page Requested.</p><br /><p>This page will automatically redirect to the <a href=\"../index.php\" >Home Page</a> in <span id=\"timer\">15 seconds<span></p></div>";
 		echo $error;
 	}
+	mysql_close($bd);
 ?>
 </div>
 	<div id="container">
