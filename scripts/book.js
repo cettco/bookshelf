@@ -53,6 +53,40 @@ function loadtitle(){
 //turn.js special effects
 $(document).ready(function() {
 	$(".cover").click(function() {
+		alert($(this).attr('name'));
+		var title = $(this).attr('name');
+		alert(title);
+		// var num;
+		// var xmlhttp;
+		// if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+		// 	xmlhttp = new XMLHttpRequest();
+		// } else { // code for IE6, IE5
+		// 	xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		// }
+		// xmlhttp.onreadystatechange = function() {
+		// 	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		// 		num = parseInt(xmlhttp.responseText);
+		// 	}
+		// }
+		// xmlhttp.open("GET", "../include/show.php?title="+title, true);
+		// xmlhttp.send();
+		// alert(num);
+
+		var url = "../include/show.php"
+
+		$('#magazine').load(url);
+
+		// $("#magazine").empty();
+		// for(var i =0;i<num;i++){
+		// 		var content ="<div id='page"+i+" class='page'>
+		// 		<div class='img'"+i+">
+		// 		<img src='http://127.0.0.1:9999/bookshelf/include/data/'"+title+"/"+i+"
+		// 		</div></div>";
+
+			
+		// 	$("#magazine").append();
+		// }
+
 		if ($("#openbook").css("display") == "none") {
 			$("#openbook").css("z-index", "100");
 			//$("#openbook").css("display", "block");

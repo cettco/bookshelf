@@ -2,6 +2,27 @@
 $fp = fopen("1.txt","w+");
 fwrite($fp, "test");
 fclose($fp);
+ function getPageTotal($path){
+    
+        // 打开文件
+        if (!$fp = fopen($path,'r')) {
+            $error = "failed";
+            return false;
+        }
+        else {
+            $max=0;
+            while(!feof($fp)) {
+                $line = fgets($fp,255);
+                if (preg_match('/\/Count [0-9]+/', $line, $matches)){
+                    preg_match('/[0-9]+/',$matches[0], $matches2);
+                    if ($max<$matches2[0]) $max=$matches2[0];
+                     }
+                }
+             fclose($fp);
+            // 返回页数
+                return $max;
+            }
+        }
 if(count($_FILES)>0) {
         if( move_uploaded_file( $_FILES['upload']['tmp_name'] , $upload_folder.'/'.$_FILES['upload']['name'] ) ) {
                 echo 'done';
@@ -24,19 +45,21 @@ fclose($fp);
         session_start();
         $userid = $_SESSION['userid'];
         $file = "data/".$userid."/$name";
-        mkdir($file);
         $fp = fopen($file, "w+");
         fwrite($fp, $content);
         fclose($fp);
-     //    $mysql_hostname = "localhost";
-    	// $mysql_user = "root";
-    	// $mysql_password = "zsq001";
-   		// $mysql_database = "db_book";
-   		// $bd2 = mysql_connect($mysql_hostname, $mysql_user, $mysql_password)or die(mysql_error());
-    	// mysql_select_db($mysql_database, $bd2) or die(mysql_error());
-     //    $sql="INSERT into books(userid,data,type,name,size) values('$userid','$content','$type','$name','$size')";
-     //    mysql_query($sql) or die(mysql_error());
-     //    mysql_close($bd2);
+        $folder = $file.".1";
+        mkdir($folder);
+        $num = getPageTotal($file);
+        $title =$userid."/".$name;
+        require('./config.php');
+        $sql="INSERT into books(userid,title,page) values('$userid','$title','$num')";
+        mysql_query($sql) or die(mysql_error());
+
+        for($i=0;$i<$num;$i++){
+            $cmd ="convert ".$file."[".$i."] "."$folder/".$i.".png";
+            exec($cmd);
+        }
         exit();
 }
 ?>
