@@ -51,7 +51,24 @@ function uploader(place, status, targetPHP, show) {
 				}
 				if (status) {
 					document.getElementById(status).innerHTML = 'Loaded : 100%<br/>Next file ...';
-					setTimeout(function(){document.getElementById(status).innerHTML =''}, 1000);
+					
+					// $myurl = "http://127.0.0.1:9999/bookshelf/include/dynamicbook.php";
+					// alert("1");
+					// $(".shelf").empty();
+					// alert('2');
+					// $(".shelf").load(url);
+					// alert('3');
+					setTimeout(function(){
+						$.get("http://127.0.0.1:9999/bookshelf/include/dynamicbook.php",function(data){
+						$(".shelf").empty();
+						$(".shelf").append(data);
+						//$.getScript("");
+						$.getScript("http://127.0.0.1:9999/bookshelf/scripts/updatebook.js");
+						//alert("datafinished");
+					});
+					}, 1000);
+					setTimeout(function(){document.getElementById(status).innerHTML =''}, 4000);
+
 				}
 			}
 				

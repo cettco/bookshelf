@@ -1,4 +1,5 @@
 <?php
+session_start();
         $userid = $_SESSION['userid'];
         $mysql_hostname = "localhost";
         $mysql_user = "root";

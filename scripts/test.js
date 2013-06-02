@@ -51,6 +51,16 @@ $(document).ready(function() {
 		var mytitle = $(this).attr('name');
 
 		var url = "http://127.0.0.1:9999/bookshelf/include/show.php";
+		// $("#magazine").empty();
+		// var mydata;
+		// $.get(url,{title:mytitle},function(data){
+		// 	//turnjs();
+		// 	mydata=data;
+		// 	//$("#magazine").append(data);
+		// 	//turnjs();
+		// });
+		// $("#magazine").append(mydata);
+		// turnjs();
 		$("#book-wrapper").load(url,{title:mytitle});
 
 		if ($("#openbook").css("display") == "none") {
@@ -63,8 +73,10 @@ $(document).ready(function() {
 	$(".quit").click(function(){
 		//$("#openbook").css("display","none");
 		$("#openbook").fadeOut(1000);
-        $("#book-wrapper").empty();
 	});
 
 
 });
+
+
+

@@ -50,13 +50,6 @@ else{
 
 	<div class="bookshelf">
 		<div class="shelf">
-			<div class="row">
-				<div class='loc'>
-					<div> <div class='sample thumb4 cover' sample='magazine1'></div> </div>
-					<div> <div class='sample thumb5' sample='magazine2'></div> </div>
-					<div> <div class='sample thumb6' sample='magazine3'></div> </div>
-				</div>
-			</div>
 			<?php
 			require("./include/book.php");
 			?>
@@ -86,34 +79,14 @@ else{
 					</div>
 				</div>
 			</div>
-			<div id="magazine" class="centerStart">
-				<div id="page1" class="page">
-    				<div class="img1">
-        <!-- The pageNum span can be either on the left, or the right if the page
-        is odd/even. -->
-        				<span class="pageNum right">
-            				1 // 32
-        				</span>
-        				<img src="http://b.hiphotos.baidu.com/album/w%3D2048/sign=1a560359f31fbe091c5ec4145f580d33/64380cd7912397ddc0d9a42b5882b2b7d0a28778.jpg" alt="Cover" />
-    				</div>
-			</div>
-			<div id="page2" class="page">
-    			<div class="img2">
-        			<span class="pageNum left">
-            			2 // 32
-       				</span>
-        		<img src="http://jpp1.imghb.com/pic/pic/68/70/79/1397377668707913_a602x602.jpg" alt="Little tulips" />
-    		</div>
-			</div>
-			<div id="page3" class="page">
-			 	<div class="img3">
-			        <span class="pageNum right">
-			            3 // 32
-			        </span>
-			        <img src="http://jpp2.imghb.com/pic/pic/96/64/95/1400679996649546_a602x602.jpg" alt="My style" />
-			    </div>
-			</div>
-			</div>
+			<!-- <div id="magazine" class="centerStart"> -->
+				<!-- <div >
+					<img src="http://e.hiphotos.baidu.com/album/w%3D2048/sign=df984957a08b87d65042ac1f33302938/6c224f4a20a4462365735e049922720e0cf3d71f.jpg">
+				</div>
+				<div>
+					<img src="http://e.hiphotos.baidu.com/album/w%3D2048/sign=8f03c13ecb8065387beaa313a3e5a144/77c6a7efce1b9d16e1eade11f2deb48f8c546494.jpg">
+				</div> -->
+			<!-- </div> -->
 			</div>
 		<div id="slider-bar" class="turnjs-slider">
 			<div id="slider"></div>

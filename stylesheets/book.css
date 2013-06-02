@@ -16,7 +16,7 @@
     position:relative;
     left:0;
 
-    opacity:0;
+    opacity:1;
 
     -moz-transition:0.3s left;
     -webkit-transition:0.3s left;
@@ -37,7 +37,7 @@
 
 /* Center the magazine when the last page is shown */
 #magazine.centerEnd{
-    left:260px;
+    /*left:260px;*/
 }
 
 .page img{

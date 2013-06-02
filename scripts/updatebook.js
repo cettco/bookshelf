@@ -44,19 +44,16 @@ function turnjs(){
 //turnjs();
 
 //turn.js special effects
-$(document).ready(function() {
 	$(".cover").click(function() {
 
 		//turnjs();
 		var mytitle = $(this).attr('name');
-
 		var url = "http://127.0.0.1:9999/bookshelf/include/show.php";
 		$("#book-wrapper").load(url,{title:mytitle});
-
+        //alert($("#book-wrapper").html());
+        //alert($("#openbook").text());
 		if ($("#openbook").css("display") == "none") {
 			$("#openbook").css("z-index", "100");
-			//$("#openbook").css("display", "block");
-			//$("#openbook").css("background-color","red");
 			$("#openbook").slideDown(1000);
 		}
 	});
@@ -65,6 +62,3 @@ $(document).ready(function() {
 		$("#openbook").fadeOut(1000);
         $("#book-wrapper").empty();
 	});
-
-
-});
