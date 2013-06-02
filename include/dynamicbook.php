@@ -22,7 +22,7 @@ session_start();
                 $img ="data/".$title.".1/0.png";
                 $url ="background-image: url(http://127.0.0.1:9999/bookshelf/include/$img);";
                 $name = "http://127.0.0.1:9999/bookshelf/include/data/".$userid."/".$title.".1";
-                $var=$var."<div><div class='sample thumb3 cover' name='$title' style='$url'></div></div></div></div>";
+                $var=$var."<div class='column'><div class='sample thumb3 cover' name='$title' style='$url'></div></div></div></div>";
                 $m++;
             }
             else if($i%3==1){
@@ -30,14 +30,14 @@ session_start();
                 $img ="data/".$title.".1/0.png";
                 $url ="background-image: url(http://127.0.0.1:9999/bookshelf/include/$img);";
                 $name = "http://127.0.0.1:9999/bookshelf/include/data/".$userid."/".$title.".1";
-                $var=$var."<div class='row'><div class='loc'><div><div class='sample thumb2 cover' name='$title' style='$url'></div></div>";
+                $var=$var."<div class='row'><div class='loc'><div class='column'><div class='sample thumb2 cover' name='$title' style='$url'></div></div>";
             }
             else{
                 $title = $row['title'];
                 $img ="data/".$title.".1/0.png";
                 $url ="background-image: url(http://127.0.0.1:9999/bookshelf/include/$img);";
                 $name = "http://127.0.0.1:9999/bookshelf/include/data/".$userid."/".$title.".1";
-                $var=$var."<div><div class='sample thumb2 cover' name='$title' style='$url'></div></div>";
+                $var=$var."<div class='column'><div class='sample thumb2 cover' name='$title' style='$url'></div></div>";
             }
         }   
         mysql_close($bd2);
