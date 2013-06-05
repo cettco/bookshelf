@@ -48,10 +48,9 @@ function turnjs(){
 
 		//turnjs();
 		var mytitle = $(this).attr('name');
+        //alert(mytitle);
 		var url = "http://127.0.0.1:9999/bookshelf/include/show.php";
 		$("#book-wrapper").load(url,{title:mytitle});
-        //alert($("#book-wrapper").html());
-        //alert($("#openbook").text());
 		if ($("#openbook").css("display") == "none") {
 			$("#openbook").css("z-index", "100");
 			$("#openbook").slideDown(1000);
@@ -64,69 +63,13 @@ function turnjs(){
 	});
 
 
-     $(function() {
-        var dragSrcEl = null;
-
-        function handleDragStart(e) {
-
-            dragSrcEl = this;
-
-            e.dataTransfer.effectAllowed = 'move';
-            e.dataTransfer.setData('text/html', this.innerHTML);
-        }
-
-        function handleDragOver(e) {
-            //alert("over");
-            if (e.preventDefault) {
-                e.preventDefault(); // Necessary. Allows us to drop.
-            }
-
-            e.dataTransfer.dropEffect = 'move'; // See the section on the DataTransfer object.
-
-            return false;
-        }
-
-        function handleDragEnter(e) {
-            // this / e.target is the current hover target.
-            //alert("endter");
-            this.classList.add('over');
-        }
-
-        function handleDragLeave(e) {
-            //alert("leaver");
-            this.classList.remove('over'); // this / e.target is previous target element.
-        }
-
-        function handleDrop(e) {
-
-            if (e.stopPropagation) {
-                e.stopPropagation(); // Stops some browsers from redirecting.
-            }
-
-            // Don't do anything if dropping the same column we're dragging.
-            if (dragSrcEl != this) {
-                // Set the source column's HTML to the HTML of the column we dropped on.
-                dragSrcEl.innerHTML = this.innerHTML;
-                this.innerHTML = e.dataTransfer.getData('text/html');
-                $.getScript("http://127.0.0.1:9999/bookshelf/scripts/updatebook.js");
-            }
-
-            return false;
-        }
-
-        function handleDragEnd(e) {
-            [].forEach.call(cols, function(col) {
-                col.classList.remove('over');
-            });
-        }
-
-        var cols = document.querySelectorAll('.column');
-        [].forEach.call(cols, function(col) {
-            col.addEventListener('dragstart', handleDragStart, false);
-            col.addEventListener('dragenter', handleDragEnter, false);
-            col.addEventListener('dragover', handleDragOver, false);
-            col.addEventListener('dragleave', handleDragLeave, false);
-            col.addEventListener('drop', handleDrop, false);
-            col.addEventListener('dragend', handleDragEnd, false);
+    $(".loc").sortable();
+    $(".loc").disableSelection();
+    $(".delete-icon").click(function(){
+        var mybook = $(this).attr("name");
+        $.get("http://127.0.0.1:9999/bookshelf/include/deletebook.php",{book:mybook},function(data){
+             $(".shelf").empty();
+             $(".shelf").append(data);
+             $.getScript("http://127.0.0.1:9999/bookshelf/scripts/updatebook.js");
         });
-    });
+});

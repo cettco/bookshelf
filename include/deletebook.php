@@ -1,17 +1,28 @@
 <?php
-        $userid = $_SESSION['userid'];
-        $mysql_hostname = "localhost";
-        $mysql_user = "root";
-        $mysql_password = "zsq001";
-        $mysql_database = "db_book";
-        $bd2 = mysql_connect($mysql_hostname, $mysql_user, $mysql_password)or die(mysql_error());
-        mysql_select_db($mysql_database, $bd2) or die(mysql_error());
-        //$userid = $_SESSION['userid'];
+session_start();
+$fp=fopen("book.txt", "w+");
+$title = $_GET['book'];
+$userid = $_SESSION['userid'];
+fwrite($fp, $title);
+fwrite($fp, $userid);
+fclose($fp);
+$sql = "DELETE from books where userid='$userid' and title='$title'";
+require("config.php");
+mysql_query($sql);
+
+// $mysql_hostname = "localhost";
+//         $mysql_user = "root";
+//         $mysql_password = "zsq001";
+//         $mysql_database = "db_book";
+//         $bd2 = mysql_connect($mysql_hostname, $mysql_user, $mysql_password)or die(mysql_error());
+//         mysql_select_db($mysql_database, $bd2) or die(mysql_error());
         $sql = "SELECT title FROM books WHERE userid='$userid'";
         $result = mysql_query($sql) or die(mysql_error());
         $count = mysql_num_rows($result);
+        //$name = "http://127.0.0.1:9999/bookshelf/include"
         $m = 1;
         $var = "";
+        //$style ="style='background-image: url(http://127.0.0.1:9999/include/;'";
         for($i = 1;$i<=$count;$i++){
             $row = mysql_fetch_array($result);
             if($i%3==0){
@@ -37,6 +48,5 @@
                 $var=$var."<div class='column'><div class='sample thumb2 cover' name='$title' style='$url'></div><div class='delete-icon' name='$title'></div></div>";
             }
         }   
-        mysql_close($bd2);
         echo $var;
 ?>

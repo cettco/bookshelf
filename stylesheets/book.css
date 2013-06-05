@@ -1,12 +1,28 @@
 .bookshelf .sample:hover{
-	z-index:2;
-	cursor:pointer;
-	background-color:white;
-	-webkit-transform: scale3d(1.1, 1.1, 1) translate3d(0, -5px, 0);
-	-moz-transform: scale3d(1.1, 1.1, 1) translate3d(0, -5px, 0);
-	-ms-transform: scale3d(1.1, 1.1, 1) translate3d(0, -5px, 0);
-	-o-transform: scale3d(1.1, 1.1, 1) translate3d(0, -5px, 0);
-	transform: scale3d(1.1, 1.1, 1) translate3d(0, -5px, 0);
+    z-index:2;
+    cursor:pointer;
+    background-color:white;
+    -webkit-transform: scale3d(1.1, 1.1, 1) translate3d(0, -5px, 0);
+    -moz-transform: scale3d(1.1, 1.1, 1) translate3d(0, -5px, 0);
+    -ms-transform: scale3d(1.1, 1.1, 1) translate3d(0, -5px, 0);
+    -o-transform: scale3d(1.1, 1.1, 1) translate3d(0, -5px, 0);
+    transform: scale3d(1.1, 1.1, 1) translate3d(0, -5px, 0);
+}
+.delete-icon {
+    display: none;
+    position: absolute;
+    top: -15px;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    background-image: url(images/close.png);
+}
+.delete-icon:hover{
+    background-image: url(images/close_highlighted.png);
+}
+.column:hover .delete-icon{
+    z-index: 3;
+    display: block;
 }
 
 #magazine{
